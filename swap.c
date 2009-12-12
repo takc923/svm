@@ -17,7 +17,7 @@ int main(){
 		exit(EXIT_FAILURE);
 	}
 	while(fgets(s,256,fp) != NULL) swap(s,a,alen,b,blen);
-
+	fclose(fp);
 	return 0;
 }
 

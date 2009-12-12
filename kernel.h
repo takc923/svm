@@ -35,7 +35,6 @@
 
 double k_value(char* a, char* b, int len, int N);
 char pair(char* a);
-char* swap(char* s,char* t,int a, int b, int c);
 
 double custom_kernel(KERNEL_PARM *kernel_parm, SVECTOR *a, SVECTOR *b) 
      /* plug in you favorite kernel */                          
@@ -69,7 +68,6 @@ double custom_kernel(KERNEL_PARM *kernel_parm, SVECTOR *a, SVECTOR *b)
     x = a->userdefined;
     y = b->userdefined;
   }
-  printf("x=%s\ny=%s\n",x,y);
 
   n_c = n/2;
   m_c = m/2;
