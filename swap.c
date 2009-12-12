@@ -50,7 +50,7 @@ void* swap(char* s,int a, int alen, int b, int blen){
 	for(i=0;i<n;i++)		usiro[alen+i]	= s[4+b+blen+i];
 	usiro[alen+i] = '\0';
 	fprintf(fp,"%c1 #%s",s[0],usiro);
-	
+	fclose(fp);	
 	return;
 }
 
