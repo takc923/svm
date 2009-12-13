@@ -39,6 +39,8 @@ int main(){
 	printf("%s\n%s\n",s,t);
 	fclose(model1);
 	fclose(model2);
+
+	
 	fclose(output1);
 	fclose(output2);
 	return 0;
