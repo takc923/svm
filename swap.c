@@ -11,22 +11,12 @@ int main(int argc, char *argv[]){
 	char s[1000];
 	char *new;
 	int a=15,alen=15,b=35,blen=15; //a:始点 alen:前半の長さ b:後半の始点 blen:後半の長さ
-	FILE *fp,*fp1,*fp2;
+	FILE *fp;
 	if(argc != 2) printf("please input 1 file");
 	if((fp = fopen(argv[1],"r")) == NULL){
 		printf("file can't open\n");
 		exit(EXIT_FAILURE);
 	}
-	if((fp1 = fopen("train1.txt","w")) == NULL){
-		printf("file can't open\n");
-		exit(EXIT_FAILURE);
-	}
-	fclose(fp1);
-	if((fp2 = fopen("train2.txt","w")) == NULL){
-		printf("file can't open\n");
-		exit(EXIT_FAILURE);
-	}
-	fclose(fp2);
 	while(fgets(s,256,fp) != NULL) swap(s,a,alen,b,blen);
 	fclose(fp);
 	return 0;
