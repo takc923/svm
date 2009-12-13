@@ -4,21 +4,31 @@
 /*
  値を返すswap
  */
-void* swap(char* s,int a, int alen, int b, int blen);
+void* swap(char* s,int a, int alen, int b, int blen,FILE* fp1, FILE* fp2);
 
 int main(int argc, char *argv[]){
 	int i,j,k;
 	char s[1000];
 	char *new;
 	int a=15,alen=15,b=35,blen=15; //a:始点 alen:前半の長さ b:後半の始点 blen:後半の長さ
-	FILE *fp;
-	if(argc != 2) printf("please input 1 file");
+	FILE *fp,*fp1,*fp2;
+	if(argc != 4) printf("please input 1 file");
 	if((fp = fopen(argv[1],"r")) == NULL){
 		printf("file can't open\n");
 		exit(EXIT_FAILURE);
 	}
-	while(fgets(s,256,fp) != NULL) swap(s,a,alen,b,blen);
+	if((fp1 = fopen(argv[2],"w")) == NULL){
+		printf("file can't open\n");
+		exit(EXIT_FAILURE);
+	}
+	if((fp2 = fopen(argv[3],"w")) == NULL){
+		printf("file can't open\n");
+		exit(EXIT_FAILURE);
+	}	
+	while(fgets(s,256,fp) != NULL) swap(s,a,alen,b,blen,fp1,fp2);
 	fclose(fp);
+	fclose(fp1);	
+	fclose(fp2);	
 	return 0;
 }
 
@@ -27,20 +37,11 @@ int main(int argc, char *argv[]){
  * sRNA
  * a:前半の始点 alen:前半の長さ b:後半の始点 blen:後半の長さ
  **/
-void* swap(char* s,int a, int alen, int b, int blen){
+void* swap(char* s,int a, int alen, int b, int blen,FILE* fp1, FILE* fp2){
 	//bは始まる方。
 	int i;
 	int n=strlen(s);
-	FILE *fp1,*fp2;
 
-	if((fp1 = fopen("train1.txt","a")) == NULL){
-		printf("file can't open\n");
-		exit(EXIT_FAILURE);
-	}	
-	if((fp2 = fopen("train2.txt","a")) == NULL){
-		printf("file can't open\n");
-		exit(EXIT_FAILURE);
-	}	
 	//入れ替える部分を取っておく
 	char mae[a+blen];
 	char usiro[n-b-blen+alen];
@@ -55,8 +56,7 @@ void* swap(char* s,int a, int alen, int b, int blen){
 	for(i=0;i<n;i++)		usiro[alen+i]	= s[4+b+blen+i];
 	usiro[alen+i] = '\0';
 	fprintf(fp2,"%c1 #%s",s[0],usiro);
-	fclose(fp1);	
-	fclose(fp2);	
+	
 	return;
 }
 

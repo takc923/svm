@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-/*
- 値を返すswap
- */
 
 int main(){
 	int i,j,k;
@@ -41,7 +38,7 @@ int main(){
 		printf("file can't open\n");
 		exit(EXIT_FAILURE);
 	}
-	if((test = fopen("test.txt","r")) == NULL){
+	if((test = fopen("test1.txt","r")) == NULL){
 		printf("file can't open\n");
 		exit(EXIT_FAILURE);
 	}
