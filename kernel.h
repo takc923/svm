@@ -170,13 +170,13 @@ double k_value(char* a, char* b, int len, int N)
 
 char pair(char* a)
 {
-  switch (*a) {
-  case 'A':return('U');
-  case 'U':return('A');
-  case 'C':return('G');
-  case 'G':return('C');
-  default: return(*a);
-  }
+	switch (*a) {
+		case 'A':return('U');
+		case 'U':return('A');
+		case 'C':return('G');
+		case 'G':return('C');
+		default: return(*a);
+	}
 }
 
 void swap(char* s,int a, int alen, int b, int blen){
