@@ -2,12 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 
+void shuffle(char music[], int size);
+
 int main(int argc, char *argv[]){
 	char s[1000];
 	int c;
+	int i=0;
+	char line[1000];
 	char *family;
 	char *name;
 	FILE *rfam,*output;
+	
+	srand((unsigned) time(NULL));
 	if(argc != 4){
 		printf("please input 3 argument!\nFirst is RNA family name.\n");
 		printf("Second is Rfam.fasta.\nThird is output file\n");
@@ -29,11 +35,29 @@ int main(int argc, char *argv[]){
 		while((c=getc(rfam)) != '>'){
 			if(c != '\n'){
 				putc(c,output);
+		    	line[i++]=c;
 			}
 		}
 		putc('\n',output);
+		line[i++] = '\0';
+		shuffle(line, i-1);
+		fputs("-1 #", output);
+		fputs(line, output);
+		putc('\n', output);
+		i=0;
 	}
 	fclose(rfam);
 	fclose(output);
 	return 0;
+}
+
+void shuffle(char music[], int size)
+{
+    int j;
+    for (j = 0; j < size; j++) {
+      int r = (int)(rand()%size);
+      char m = music[j];
+      music[j] = music[r];
+      music[r] = m;
+    }
 }
