@@ -26,7 +26,7 @@ int main(int argc, char *argv[]){
 	while(fgets(s,1000,rfam) != NULL){
 		if(strstr(s,family)==NULL)continue;
 		fputs("+1 #",output);
-		while((c=getc(output)) != '>'){
+		while((c=getc(rfam)) != '>'){
 			if(c != '\n'){
 				putc(c,output);
 			}
