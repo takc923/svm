@@ -14,17 +14,17 @@ int main(int argc, char *argv[]){
 	FILE *rfam,*output;
 	
 	srand((unsigned) time(NULL));
-	if(argc != 4){
-		printf("please input 3 argument!\nFirst is RNA family name.\n");
+	if(argc != 3){
+		printf("please input 3 argument!\n");
 		printf("Second is Rfam.fasta.\nThird is output file\n");
 		exit(1);
 	}
 	family = argv[1];
-	if((rfam = fopen(argv[2],"r")) == NULL){
+	if((rfam = fopen("Rfam.fasta","r")) == NULL){
 		printf("file can't open\n");
 		exit(EXIT_FAILURE);
 	}
-	if((output = fopen(argv[3],"w")) == NULL){
+	if((output = fopen(argv[2],"w")) == NULL){
 		printf("file can't open\n");
 		exit(EXIT_FAILURE);
 	}
