@@ -15,8 +15,8 @@ int main(int argc, char *argv[]){
 	
 	srand((unsigned) time(NULL));
 	if(argc != 3){
-		printf("please input 3 argument!\n");
-		printf("Second is Rfam.fasta.\nThird is output file\n");
+		printf("please input 2 argument!\n");
+		printf("First is family name.\nSecond is output file\n");
 		exit(1);
 	}
 	family = argv[1];
