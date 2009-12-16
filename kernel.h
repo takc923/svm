@@ -49,7 +49,7 @@ double custom_kernel(KERNEL_PARM *kernel_parm, SVECTOR *a, SVECTOR *b)
 	char* y;
 	int len_a = strlen(a->userdefined);
 	int len_b = strlen(b->userdefined);
-	int aa=15,alen=15,bb=35,blen=15; //a:始点 alen:前半の長さ b:後半の始点 blen:後半の長さ
+	int aa=30,alen=10,bb=43,blen=10; //a:始点 alen:前半の長さ b:後半の始点 blen:後半の長さ
 
 	if(len_a == 0 || len_b ==0){
 		return((double)0);
