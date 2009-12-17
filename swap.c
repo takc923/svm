@@ -10,7 +10,7 @@ int main(int argc, char *argv[]){
 	int i,j,k;
 	char s[1000];
 	char *new;
-	int a=15,alen=15,b=35,blen=15; //a:始点 alen:前半の長さ b:後半の始点 blen:後半の長さ
+	int a=13 ,alen=6,b=20,blen=8; //a:始点 alen:前半の長さ b:後半の始点 blen:後半の長さ
 	FILE *fp,*fp1,*fp2;
 	if(argc != 4) printf("please input 1 file");
 	if((fp = fopen(argv[1],"r")) == NULL){
