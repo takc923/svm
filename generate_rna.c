@@ -3,38 +3,39 @@
 #include <string.h>
 #include <time.h>
 
-char aucg(int c){
-	switch{
-		case '0'return'A';
-		case '1'return'U';
-		case '2'return'C';
-		case '3'return'G';
+char* aucg(int c){
+	switch(c){
+		case '0':return"A";
+		case '1':return"U";
+		case '2':return"C";
+		case '3':return"G";
 	}
 }
 
 int main(int argc, char *argv[]){
-	int i;
+	int i,j;
 	int c;
 	int r;
-	int a,alen,b,blen;
-	if(argc != 6){
-		printf("please input 6 arguments\n");
-		printf("a,alen,b,blen,n\n");
-	}
-	a = atoi(argv[1]);
-	alen = atoi(argv[2]);
-	b = atoi(argv[3]);
-	blen = atoi(argv[4]);
-	n = atoi(argv[5]);
-	char line1[3],line2[5],line3[6],line4[1],line5[5],line6[6],line7[3];
+	char *tmp;
 	FILE *fp;
 	srand(time(NULL));	
-	fp = fopen("rna.txt",'w');
-	for(i=1;i<20;i++){
-		r = rand()%4;
-		line1[i] = aucg(r);
+	fp = fopen("rna.txt","w");
+	if(argc != 3){
+		printf("please input number and length.\n");
+		exit(1);
 	}
-	free(fp);
+	for(j=0;j<atoi(argv[1]);j++){
+		for(i=0;i<atoi(argv[2]);i++){
+			r = rand()%4;
+			printf("aaa\n");
+			tmp = aucg(r);
+			printf("%s\n",tmp);
+			fputs(tmp,fp);
+			printf("bbb\n");
+		}
+		fputs("\n",fp);
+	}
+	fclose(fp);
 }
 
 
