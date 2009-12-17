@@ -72,6 +72,7 @@ double custom_kernel(KERNEL_PARM *kernel_parm, SVECTOR *a, SVECTOR *b)
 	char xx[n],yy[m];
 	strcpy(xx,x);strcpy(yy,y);
 	swap(xx,aa,alen,bb,blen);swap(yy,aa,alen,bb,blen);
+	printf("%s\n",xx);
 	char *xzenhan,*xkouhan,*yzenhan,*ykouhan;
 	//char xzenhan[a+blen+1],xkouhan[n-blen-b+a+1];
 	//char yzenhan[a+blen+1],ykouhan[m-blen-b+a+1];
@@ -82,7 +83,7 @@ double custom_kernel(KERNEL_PARM *kernel_parm, SVECTOR *a, SVECTOR *b)
 	
 	n_c = n/2;
 	m_c = m/2;
-	printf("%s\n",xkouhan);
+	//printf("%s\n",xkouhan);
   if(N>n){
     if(N>m){
       kernel_value = k_value(xzenhan, yzenhan+(m_c)-(n_c), n, n);
@@ -183,12 +184,13 @@ void swap(char* s,int a, int alen, int b, int blen){
 	int i;
 	int n=strlen(s);
 	char tmp[n];
-
+	printf("n=%d\ns=%s\n",n,s);
 	for(i=0;i<a;i++)		tmp[i]				= s[i];
 	for(i=0;i<blen;i++)		tmp[a+i]			= s[b+i];
 	for(i=0;i<b-a-alen;i++)	tmp[a+blen+i] 		= s[a+alen+i];
-	for(i=0;i<blen;i++)		tmp[b-alen+blen+i]	= s[b+i];
+	for(i=0;i<blen;i++)		tmp[b-alen+blen+i]	= s[a+i];
 	for(i=0;i<n-b-blen;i++)	tmp[b+blen+i]		= s[b+blen+i];
 	for(i=0;i<n;i++)		s[i]				= tmp[i];
+	printf("s=%s\n",s);
 	return;
 }
