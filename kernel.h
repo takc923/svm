@@ -73,8 +73,6 @@ double custom_kernel(KERNEL_PARM *kernel_parm, SVECTOR *a, SVECTOR *b)
 	strcpy(xx,x);strcpy(yy,y);
 	swap(xx,aa,alen,bb,blen);swap(yy,aa,alen,bb,blen);
 	char *xzenhan,*xkouhan,*yzenhan,*ykouhan;
-	//char xzenhan[a+blen+1],xkouhan[n-blen-b+a+1];
-	//char yzenhan[a+blen+1],ykouhan[m-blen-b+a+1];
 	xzenhan = xx;	yzenhan = yy;
 	xzenhan[aa+blen] = '\0';	yzenhan[aa+blen] = '\0';
 	xkouhan = &xx[bb-alen+blen];

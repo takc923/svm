@@ -3,6 +3,11 @@
 #include <string.h>
 #include <time.h>
 
+#define A 11
+#define ALEN 6
+#define B 18
+#define BLEN 7
+
 char* aucg(int c){
 	switch(c){
 		case '0':return"A";
