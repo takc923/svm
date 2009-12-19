@@ -42,22 +42,28 @@ void generate_positive(FILE *fp,int n){
 		for(i=0;i<A;i++){
 			l1[i] = aucg();
 		}
+		l1[A] = '\0';
 		for(i=0;i<ALEN;i++){
 			l2[i] = aucg();
 		}
+		l2[ALEN] = '\0';
 		for(i=0;i<B-A-ALEN;i++){
 			l3[i] = aucg();
 		}
+		l3[i] = '\0';
 		for(i=0;i<BLEN;i++){
 			l4[i] = l1[A-1-i];
 		}
+		l4[i] = '\0';
 		for(i=0;i<ALEN;i++){
 			l5[i] = l2[ALEN-1-i];
 		}
+		l5[i] = '\0';
 		for(i=0;i<L-B-BLEN-ALEN;i++){
 			l6[i] = aucg();
 		}
-		fprintf(fp,"+1 #%s%s%s%s%s\n",l1,l2,l3,l4,l5);
+		l6[i] = '\0';
+		fprintf(fp,"+1 #%s%s%s%s%s%s\n",l1,l2,l3,l4,l5,l6);
 	}
 }
 
@@ -69,28 +75,33 @@ void generate_negative(FILE *fp,int n){
 		for(i=0;i<A;i++){
 			l1[i] = aucg();
 		}
+		l1[i] = '\0';
 		for(i=0;i<ALEN;i++){
 			l2[i] = aucg();
 		}
+		l2[i] = '\0';
 		for(i=0;i<B-A-ALEN;i++){
 			l3[i] = aucg();
 		}
+		l3[i] = '\0';
 		for(i=0;i<BLEN;i++){
 			l4[i] = aucg();
 		}
+		l4[i] = '\0';
 		for(i=0;i<ALEN;i++){
 			l5[i] = aucg();
 		}
+		l5[i] = '\0';
 		for(i=0;i<L-B-BLEN-ALEN;i++){
 			l6[i] = aucg();
 		}
-		fprintf(fp,"+1 #%s%s%s%s%s\n",l1,l2,l3,l4,l5);
+		l6[i] = '\0';
+		fprintf(fp,"-1 #%s%s%s%s%s%s\n",l1,l2,l3,l4,l5,l6);
 	}
 }
 //AUCGのいずれかをランダムで出力する。
 char aucg(){
 	int r = rand()%4;
-	char c[1];
 	switch(r){
 		case '0': return 'A';
 		case '1': return 'U';
