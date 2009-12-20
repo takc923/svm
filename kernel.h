@@ -50,12 +50,9 @@ double custom_kernel(KERNEL_PARM *kernel_parm, SVECTOR *a, SVECTOR *b)
 	int len_a = strlen(a->userdefined);
 	int len_b = strlen(b->userdefined);
 	int aa=11,alen=6,bb=18,blen=7; //a:始点 alen:前半の長さ b:後半の始点 blen:後半の長さ
-	aa--;bb--;
 	if(len_a == 0 || len_b ==0){
 		return((double)0);
 	}
-	// printf("%d\n",len_a);
-
 
 	if(len_a >= len_b){
 		n = len_b;
@@ -72,63 +69,32 @@ double custom_kernel(KERNEL_PARM *kernel_parm, SVECTOR *a, SVECTOR *b)
 	char xx[n],yy[m];
 	strcpy(xx,x);strcpy(yy,y);
 	swap(xx,aa,alen,bb,blen);swap(yy,aa,alen,bb,blen);
-	char *xzenhan,*xkouhan,*yzenhan,*ykouhan;
-	xzenhan = xx;	yzenhan = yy;
-	xzenhan[aa+blen] = '\0';	yzenhan[aa+blen] = '\0';
-	xkouhan = &xx[bb-alen+blen];
-	ykouhan = &yy[bb-alen+blen];
 	
 	n_c = n/2;
 	m_c = m/2;
-	//printf("%s\n",xkouhan);
   if(N>n){
     if(N>m){
-      kernel_value = k_value(xzenhan, yzenhan+(m_c)-(n_c), n, n);
+      kernel_value = k_value(xx, yy+(m_c)-(n_c), n, n);
     }
     else{
       for(i=(N_c)-(n_c); i<=m-N+(N_c)-(n_c); i++){
-	kernel_value += k_value(xzenhan, yzenhan+i, n, n);
+	kernel_value += k_value(xx, yy+i, n, n);
       }
     }
   }
   else{
     for(i=(N-n); i<=(m-N);i++){
       if(i<0){
-	kernel_value += k_value(xzenhan-i, yzenhan, n+i, N);
+	kernel_value += k_value(xx-i, yy, n+i, N);
       }
       if(i>=0 && i<=(m-n)){
-	kernel_value += k_value(xzenhan, yzenhan+i, n, N);
+	kernel_value += k_value(xx, yy+i, n, N);
       }
       if(i>(m-n)){
-	kernel_value += k_value(xzenhan, yzenhan+i, m-i, N);
+	kernel_value += k_value(xx, yy+i, m-i, N);
       }
     }
   }
-
-  if(N>n){
-    if(N>m){
-      kernel_value = k_value(xkouhan, ykouhan+(m_c)-(n_c), n, n);
-    }
-    else{
-      for(i=(N_c)-(n_c); i<=m-N+(N_c)-(n_c); i++){
-	kernel_value += k_value(xkouhan, ykouhan+i, n, n);
-      }
-    }
-  }
-  else{
-    for(i=(N-n); i<=(m-N);i++){
-      if(i<0){
-	kernel_value += k_value(xkouhan-i, ykouhan, n+i, N);
-      }
-      if(i>=0 && i<=(m-n)){
-	kernel_value += k_value(xkouhan, ykouhan+i, n, N);
-      }
-      if(i>(m-n)){
-	kernel_value += k_value(xkouhan, ykouhan+i, m-i, N);
-      }
-    }
-  }
-  //printf("%f\n",kernel_value);
   return(kernel_value); 
 }
 

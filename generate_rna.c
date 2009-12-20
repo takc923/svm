@@ -19,19 +19,15 @@ int main(int argc, char *argv[]){
 	char *tmp;
 	FILE *fp;
 	srand(time(NULL));	
-	fp = fopen("rna.txt","w");
-	if(argc != 2){
-		printf("please input number.\n");
+	if(argc != 3){
+		printf("please input number and output file.\n");
 		exit(1);
 	}
+	fp = fopen(argv[2],"w");
 	int n = atoi(argv[1]);//作る数。
 	int half = (int)(n/2);
-	printf("half=%d\n",half);
-	printf("a\n");
 	generate_positive(fp,half);
-	printf("after positive.\n");
 	generate_negative(fp,half);
-	printf("a\n");
 	fclose(fp);
 }
 
