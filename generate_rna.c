@@ -103,7 +103,6 @@ void generate_negative(FILE *fp,int n){
 //AUCGのいずれかをランダムで出力する。
 char aucg(){
 	int r = rand()%4;
-	printf("%d\n",r);
 	switch(r){
 		case 0: return 'A';
 		case 1: return 'U';
