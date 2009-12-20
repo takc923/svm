@@ -11,6 +11,7 @@
 void generate_positive(FILE *fp,int n);
 void generate_negative(FILE *fp,int n);
 char aucg();
+char pair(char a);
 
 int main(int argc, char *argv[]){
 	int i,j;
@@ -19,19 +20,15 @@ int main(int argc, char *argv[]){
 	char *tmp;
 	FILE *fp;
 	srand(time(NULL));	
-	fp = fopen("rna.txt","w");
-	if(argc != 2){
-		printf("please input number.\n");
+	if(argc != 3){
+		printf("please input number and output file.\n");
 		exit(1);
 	}
+	fp = fopen(argv[2],"w");
 	int n = atoi(argv[1]);//作る数。
 	int half = (int)(n/2);
-	printf("half=%d\n",half);
-	printf("a\n");
 	generate_positive(fp,half);
-	printf("after positive.\n");
 	generate_negative(fp,half);
-	printf("a\n");
 	fclose(fp);
 }
 
@@ -53,11 +50,11 @@ void generate_positive(FILE *fp,int n){
 		}
 		l3[i] = '\0';
 		for(i=0;i<BLEN;i++){
-			l4[i] = l1[A-1-i];
+			l4[i] = pair(l1[A-1-i]);
 		}
 		l4[i] = '\0';
 		for(i=0;i<ALEN;i++){
-			l5[i] = l2[ALEN-1-i];
+			l5[i] = pair(l2[ALEN-1-i]);
 		}
 		l5[i] = '\0';
 		for(i=0;i<L-B-BLEN-ALEN;i++){
@@ -109,5 +106,16 @@ char aucg(){
 		case 2: return 'C';
 		case 3: return 'G';
 		default:return 'A';
+	}
+}
+
+char pair(char a)
+{
+	switch (a) {
+		case 'A':return('U');
+		case 'U':return('A');
+		case 'C':return('G');
+		case 'G':return('C');
+		default: return(a);
 	}
 }
