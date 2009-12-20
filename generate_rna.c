@@ -29,6 +29,7 @@ int main(int argc, char *argv[]){
 	printf("half=%d\n",half);
 	printf("a\n");
 	generate_positive(fp,half);
+	printf("after positive.\n");
 	generate_negative(fp,half);
 	printf("a\n");
 	fclose(fp);
@@ -37,7 +38,7 @@ int main(int argc, char *argv[]){
 //fp:入力するファイルポインタ,n:作る数
 void generate_positive(FILE *fp,int n){
 	int i,j;
-	char l1[A],l2[ALEN],l3[B-A-ALEN],l4[BLEN],l5[ALEN],l6[L-B-BLEN-ALEN];
+	char l1[A+1],l2[ALEN+1],l3[B-A-ALEN+1],l4[BLEN+1],l5[ALEN+1],l6[L-B-BLEN-ALEN+1];
 	for(j=0;j<n;j++){
 		for(i=0;i<A;i++){
 			l1[i] = aucg();
@@ -70,7 +71,7 @@ void generate_positive(FILE *fp,int n){
 //fp:入力するファイルポインタ,n:作る数
 void generate_negative(FILE *fp,int n){
 	int i,j;
-	char l1[A],l2[ALEN],l3[B-A-ALEN],l4[BLEN],l5[ALEN],l6[L-B-BLEN-ALEN];
+	char l1[A+1],l2[ALEN+1],l3[B-A-ALEN+1],l4[BLEN+1],l5[ALEN+1],l6[L-B-BLEN-ALEN+1];
 	for(j=0;j<n;j++){
 		for(i=0;i<A;i++){
 			l1[i] = aucg();
@@ -102,11 +103,12 @@ void generate_negative(FILE *fp,int n){
 //AUCGのいずれかをランダムで出力する。
 char aucg(){
 	int r = rand()%4;
+	printf("%d\n",r);
 	switch(r){
-		case '0': return 'A';break;
-		case '1': return 'U';break;
-		case '2': return 'C';break;
-		case '3': return 'G';break;
+		case 0: return 'A';
+		case 1: return 'U';
+		case 2: return 'C';
+		case 3: return 'G';
 		default:return 'A';
 	}
 }
