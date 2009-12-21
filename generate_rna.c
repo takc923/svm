@@ -3,11 +3,11 @@
 #include <string.h>
 #include <time.h>
 
-#define A 11
-#define ALEN 6
-#define B 18
-#define BLEN 7
-#define L 35
+#define A 26
+#define ALEN 11
+#define B 39
+#define BLEN 8
+#define L 62
 void generate_positive(FILE *fp,int n);
 void generate_negative(FILE *fp,int n);
 char aucg();
