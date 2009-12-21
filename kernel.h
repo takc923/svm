@@ -50,7 +50,6 @@ double custom_kernel(KERNEL_PARM *kernel_parm, SVECTOR *a, SVECTOR *b)
 	int len_a = strlen(a->userdefined);
 	int len_b = strlen(b->userdefined);
 	int aa=11,alen=6,bb=18,blen=7; //a:始点 alen:前半の長さ b:後半の始点 blen:後半の長さ
-	aa--;bb--;
 	if(len_a == 0 || len_b ==0){
 		return((double)0);
 	}
