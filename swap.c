@@ -24,11 +24,11 @@ int main(int argc, char *argv[]){
 	if((fp2 = fopen(argv[3],"w")) == NULL){
 		printf("file can't open\n");
 		exit(EXIT_FAILURE);
-	}	
+	}
 	while(fgets(s,256,fp) != NULL) swap(s,a,alen,b,blen,fp1,fp2);
 	fclose(fp);
-	fclose(fp1);	
-	fclose(fp2);	
+	fclose(fp1);
+	fclose(fp2);
 	return 0;
 }
 
@@ -56,7 +56,7 @@ void* swap(char* s,int a, int alen, int b, int blen,FILE* fp1, FILE* fp2){
 	for(i=0;i<n;i++)		usiro[alen+i]	= s[4+b+blen+i];
 	usiro[alen+i] = '\0';
 	fprintf(fp2,"%c1 #%s",s[0],usiro);
-	
+
 	return;
 }
 
