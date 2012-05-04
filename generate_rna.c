@@ -19,7 +19,7 @@ int main(int argc, char *argv[]){
 	int r;
 	char *tmp;
 	FILE *fp;
-	srand(time(NULL));	
+	srand(time(NULL));
 	if(argc != 3){
 		printf("please input number and output file.\n");
 		exit(1);

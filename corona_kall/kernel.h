@@ -11,15 +11,15 @@
 
 /* KERNEL_PARM is defined in svm_common.h The field 'custom' is reserved for */
 /* parameters of the user defined kernel. You can also access and use */
-/* the parameters of the other kernels. Just replace the line 
-             return((double)(1.0)); 
+/* the parameters of the other kernels. Just replace the line
+             return((double)(1.0));
    with your own kernel. */
 
   /* Example: The following computes the polynomial kernel. sprod_ss
-              computes the inner product between two sparse vectors. 
+              computes the inner product between two sparse vectors.
 
       return((CFLOAT)pow(kernel_parm->coef_lin*sprod_ss(a->words,b->words)
-             +kernel_parm->coef_const,(double)kernel_parm->poly_degree)); 
+             +kernel_parm->coef_const,(double)kernel_parm->poly_degree));
   */
 
 /* If you are implementing a kernel that is not based on a
@@ -36,8 +36,8 @@
 double k_value(char* a, char* b, int len, int N);
 char pair(char* a);
 
-double custom_kernel(KERNEL_PARM *kernel_parm, SVECTOR *a, SVECTOR *b) 
-     /* plug in you favorite kernel */                          
+double custom_kernel(KERNEL_PARM *kernel_parm, SVECTOR *a, SVECTOR *b)
+     /* plug in you favorite kernel */
 {
   double kernel_value = 0;
   int N = atoi(kernel_parm->custom);
@@ -49,7 +49,7 @@ double custom_kernel(KERNEL_PARM *kernel_parm, SVECTOR *a, SVECTOR *b)
   int len_a = strlen(a->userdefined);
   int len_b = strlen(b->userdefined);
   // printf("%d\n",N);
- 
+
   if(len_a == 0 || len_b ==0){
     return((double)0);
   }
@@ -96,7 +96,7 @@ double custom_kernel(KERNEL_PARM *kernel_parm, SVECTOR *a, SVECTOR *b)
   }
 
   //printf("%f\n",kernel_value);
-  return(kernel_value); 
+  return(kernel_value);
 }
 
 double k_value(char* a, char* b, int len, int N)
