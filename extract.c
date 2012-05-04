@@ -12,7 +12,7 @@ int main(int argc, char *argv[]){
 	char *family;
 	char *name;
 	FILE *rfam,*output;
-	
+
 	srand((unsigned) time(NULL));
 	if(argc != 3){
 		printf("please input 2 argument!\n");
